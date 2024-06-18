@@ -1,0 +1,33 @@
+#loginForm {
+  border: 1px solid black;
+  border-radius: 15px 15px 15px 15px;
+}
+#loginFieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+#loginButton {
+  border-radius: 15px 15px 15px 15px;
+  margin-bottom: 10px;
+}
+
+#heroImage img {
+  height: 400px;
+  width: 100%;
+}
+/* #popularProducts img {
+  height: 200px;
+  width: 300px;
+}
+#popularPlushies img {
+  height: 200px;
+  width: 300px;
+}
+.messageAdd {
+  display: none;
+} */
+/* #messageID1 {
+  display: block;
+} */

@@ -1,0 +1,60 @@
+-- create database 'prototype1' in phpmyadmin
+
+CREATE TABLE books(
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    price DECIMAL(8,2),
+    image_path VARCHAR(255),
+    description TEXT,
+    categories VARCHAR(255)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE books ADD status VARCHAR(100) DEFAULT 'Active';
+
+INSERT INTO books (name,price,image_path,description,categories) VALUES ('Book 1',500.50,'book1.jpg',"THis is a book created by X and CO authored by Y",'Afrikaans');
+INSERT INTO books (name,price,image_path,description,categories) VALUES ('Book 2',300.50,'book2.jpg',"THis is a book created by X and CO authored by Y",'Afrikaans');
+INSERT INTO books (name,price,image_path,description,categories) VALUES ('Book 3',650.00,'book3.jpg',"THis is a book created by X and CO authored by Y",'Afrikaans');
+INSERT INTO books (name,price,image_path,description,categories) VALUES ('Book 4',320.00,'book4.jpg',"THis is a book created by X and CO authored by Y",'Afrikaans'); 
+
+CREATE TABLE `users`(
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255),
+    `email` VARCHAR(255),
+    `password` VARCHAR(255),
+    `user_type` VARCHAR(255) DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+UPDATE users SET user_type = 'admin' where id = 1;
+
+CREATE TABLE book_qauntity(
+  book_id INT PRIMARY KEY,
+  book_quantity INT,
+  CONSTRAINT FOREIGN KEY book_qauntity(book_id) REFERENCES books(id),
+);
+
+CREATE TABLE cart(
+    cart_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    product_id INT,
+    quantity INT,
+    CONSTRAINT FOREIGN KEY cart(user_id) REFERENCES users(id),
+    CONSTRAINT FOREIGN KEY cart(product_id) REFERENCES books(id)
+);
+
+CREATE TABLE order_details(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    total DECIMAL(8,2),
+    payment_id INT,
+    order_status VARCHAR(100) DEFAULT 'Active',
+    CONSTRAINT FOREIGN KEY order_details(user_id) REFERENCES users(id)
+);
+
+CREATE TABLE order_items(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    CONSTRAINT FOREIGN KEY order_items(order_id) REFERENCES order_details(id),
+    CONSTRAINT FOREIGN KEY order_items(product_id) REFERENCES books(id)
+);

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['user_id'])) {
         $stmt->bindParam(':quantity', $quantity);
         $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();
-        echo "There are so many  rows with product id: " . $product_id . " rows " . $countProduct . " quantity product: " . $quantity . " for user with id: " . $user_id;
+        // echo "There are so many  rows with product id: " . $product_id . " rows " . $countProduct . " quantity product: " . $quantity . " for user with id: " . $user_id;
         header("location: cart.php");
         exit;
     } else {
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['user_id'])) {
         exit;
     }
 } else {
-    echo "Not logged in";
+    // echo "Not logged in";
     header("location: cart.php?error=Not Logged In");
     exit;
 }

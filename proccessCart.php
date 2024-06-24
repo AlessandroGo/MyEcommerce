@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SESSION['user_id'])) {
         $stmt->bindParam(':quantity', $quantity);
         $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();
-        echo "There are so many  rows with product id: " . $product_id . " rows " . $countProduct . " quantity product: " . $quantity . " for user with id: " . $user_id;
+        // echo "There are so many  rows with product id: " . $product_id . " rows " . $countProduct . " quantity product: " . $quantity . " for user with id: " . $user_id;
         header("location: products.php");
         exit;
     } else {

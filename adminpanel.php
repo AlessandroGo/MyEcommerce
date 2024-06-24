@@ -22,12 +22,12 @@ if (!isset($_GET['category']) || empty($_GET['categoryAdd'])) {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET['delete'])) {
     $categoryDelete = validate($_GET['category']);
-    header("Location: adminpanel.php?categoryDelete={$categoryDelete}");
+    header("Location: adminPanel.php?categoryDelete={$categoryDelete}");
     exit;
 }
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET['restore'])) {
     $categoryRestore = validate($_GET['category']);
-    header("Location: adminpanel.php?categoryRestore={$categoryRestore}");
+    header("Location: adminPanel.php?categoryRestore={$categoryRestore}");
     exit;
 }
 ?>

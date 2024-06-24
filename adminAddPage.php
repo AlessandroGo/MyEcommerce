@@ -2,7 +2,7 @@
 include_once 'dbcon.php';
 session_start();
 if (!isset($_SESSION['user_type']) || empty($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {
-    header('location: home.php?error=Access Denied');
+    header('location: index.php?error=Access Denied');
     exit;
 }
 ?>
